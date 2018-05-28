@@ -5,7 +5,7 @@ from email.mime.multipart import MIMEMultipart
 from email.mime.image import MIMEImage
 from email.mime.application import MIMEApplication
 
-def make_email(me, passw, you, host, port, text, subject=None, html=None, images=None, image_names_in_html=None, file_to_add=None):
+def make_email(me, passw, you, host, port, text=None, subject=None, html=None, images=None, image_names_in_html=None, file_to_add=None):
     msg = MIMEMultipart('alternative')
     if subject is not None:
         msg['subject'] = subject
@@ -13,10 +13,12 @@ def make_email(me, passw, you, host, port, text, subject=None, html=None, images
         msg['subject'] = "Default"
     msg['From'] = me
     msg['To'] = you
-
+    if text is None and html is None:
+        raise Exception("No text and html")
     #data set up
-    part_text = MIMEText(text, 'plain')
-    msg.attach(part_text)
+    if text is not None:
+        part_text = MIMEText(text, 'plain')
+        msg.attach(part_text)
     if html is not None:
         part_html = MIMEText(html, 'html')
         #display images in html file
@@ -49,6 +51,8 @@ def make_email(me, passw, you, host, port, text, subject=None, html=None, images
     text = msg.as_string()
     s.sendmail(me, you, text)
     s.quit()
+
+    
 
 if __name__ == '__main__':
     text = "Hi!\nHow are you?\nHere is the link you wanted:\nhttp://www.python.org"
