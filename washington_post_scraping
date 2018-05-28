@@ -1,0 +1,32 @@
+from requests import get
+from requests.exceptions import RequestException
+from contextlib import closing
+from bs4 import BeautifulSoup
+from .email_sender import simple_get
+
+
+def get_wash_post_nav_bar_items():
+    url_root = "https://alistapart.com"
+    response = simple_get("https://www.washingtonpost.com")
+    if response is not None:
+        html = BeautifulSoup(response, 'html.parser')
+        found_ul = [ul for ul in html.find('ul', attrs={"class":"menu inline-list homepage-nav hidden-xs","id":"sections-menu-wide"})]
+        found_a = [i.find('a') for i in found_ul if i != " "]
+        # tuple of navigation bar (topic, link)
+        result = [(i.text ,i['href']) for i in found_a]
+        print(result)
+
+
+#itemprop="itemListElement" - stories
+def get_some_articles(url):
+    response = simple_get(url)
+    if response is not None:
+        html = BeautifulSoup(response, 'html.parser')
+        divs = [i for i in html.find_all('div', attrs={"class":"row"})]
+        print(divs)
+
+
+
+if __name__ == '__main__':
+    res = get_wash_post_nav_bar_items()
+    get_some_articles('https://www.washingtonpost.com/politics/')
