@@ -2,7 +2,29 @@ from requests import get
 from requests.exceptions import RequestException
 from contextlib import closing
 from bs4 import BeautifulSoup
-from email_sender import simple_get
+from email_send import make_email
+
+
+
+def simple_get(url):
+    try:
+        with closing(get(url, stream=True)) as resp:
+            if is_good_response(resp):
+                return resp.content
+            else:
+                return None
+    except RequestException as e:
+        log_error('Error during requests to {0} : {1}'.format(url, str(e)))
+        return None
+
+
+def is_good_response(resp):
+    content_type = resp.headers['Content-Type'].lower()
+    return resp.status_code == 200 and content_type is not None and content_type.find('html') > 1
+
+
+def log_error(error):
+    print(error)
 
 
 def get_wash_post_nav_bar_items():
@@ -16,17 +38,55 @@ def get_wash_post_nav_bar_items():
         result = [(i.text ,i['href']) for i in found_a]
         print(result)
 
+def download_photo(url):
+    data = get(url).content
+    path = (url.split('/')[-1]).split("?")[0]
+    print(path)
+    fd = open(path, "wb")
+    fd.write(data)
+    fd.close()
 
 #itemprop="itemListElement" - stories
 def get_some_articles(url):
     response = simple_get(url)
     if response is not None:
         html = BeautifulSoup(response, 'html.parser')
-        divs = [i for i in html.find_all('div', attrs={"class":"row"})]
-        print(divs)
+        desc = [i for i in html.find_all('div', attrs={"itemprop":"itemListElement","itemtype":"http://schema.org/ListItem"})]
+        story_b = [i.find("div", attrs={"class": "story-body col-xs-8 col-md-8"}) for i in desc if i.find("div", attrs={"class": "story-body col-xs-8 col-md-8"}) is not None]
+        image_b = [i.find("div", attrs={"class": "story-image col-xs-4 col-md-4"}) for i in desc if i.find("div", attrs={"class": "story-image col-xs-4 col-md-4"}) is not None]
+        headlines = [(k.text, k['href']) for k in (i.find("a", attrs={"data-pb-local-content-field":"web_headline"}) for i in story_b)]
+        image_data = [i.find("img") for i in image_b]
+        # (("Text of article", "link to article"), image)
+        return (headlines, image_data)
+
+def constract_html():
+    template_beg = "<html><head></head><body>"
+    template_end = "</body></html>"
+    html = []
+
+    # make_email(', '', '', 'smtp.gmail.com',
+    #          465, subject="My new letter",)
 
 
+def get_hits_by_name(name):
+    url_root = 'https://xtools.wmflabs.org/articleinfo/en.wikipedia.org/{}'
+    response = simple_get(url_root.format(name))
+
+    if response is not None:
+        html = BeautifulSoup(response, 'html.parser')
+        hit_link = [a for a in html.select('a') if a['href'].find('latest-60') > -1]
+
+        if len(hit_link) > 0:
+            link_text = hit_link[0].text.replace(',', '')
+            try:
+                return int(link_text)
+            except:
+                log_error("couldn't parse {} as an `int`".format(link_text))
+
+    log_error('No pageviews found for {}'.format(name))
+    return None
 
 if __name__ == '__main__':
     res = get_wash_post_nav_bar_items()
     get_some_articles('https://www.washingtonpost.com/politics/')
+    download_photo("https://www.washingtonpost.com/rf/image_220x164/2010-2019/WashingtonPost/2017/09/12/Editorial-Opinion/Images/court04-2338.jpg?t=20170517a")
