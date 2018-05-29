@@ -2,7 +2,7 @@ from requests import get
 from requests.exceptions import RequestException
 from contextlib import closing
 from bs4 import BeautifulSoup
-from .email_sender import simple_get
+from email_sender import simple_get
 
 
 def get_wash_post_nav_bar_items():
