@@ -35,16 +35,18 @@ def get_wash_post_nav_bar_items():
         found_ul = [ul for ul in html.find('ul', attrs={"class":"menu inline-list homepage-nav hidden-xs","id":"sections-menu-wide"})]
         found_a = [i.find('a') for i in found_ul if i != " "]
         # tuple of navigation bar (topic, link)
-        result = [(i.text ,i['href']) for i in found_a]
-        print(result)
+        result = [(i.text, i['href']) for i in found_a]
+        return result
+    return None
 
 def download_photo(url):
     data = get(url).content
-    path = (url.split('/')[-1]).split("?")[0]
+    path = ((url.split('/')[-1]).split("?")[0]).split("&")[0]
     print(path)
     fd = open(path, "wb")
     fd.write(data)
     fd.close()
+    return path
 
 #itemprop="itemListElement" - stories
 def get_some_articles(url):
@@ -57,36 +59,69 @@ def get_some_articles(url):
         headlines = [(k.text, k['href']) for k in (i.find("a", attrs={"data-pb-local-content-field":"web_headline"}) for i in story_b)]
         image_data = [i.find("img") for i in image_b]
         # (("Text of article", "link to article"), image)
-        return (headlines, image_data)
+        return headlines, image_data
+    return None
 
-def constract_html():
+
+def constract(html, top_image=None):
     template_beg = "<html><head></head><body>"
     template_end = "</body></html>"
-    html = []
+    images = list()
+    for i in html.find_all('img'):
+        path = i['data-hi-res-src']
+        added = download_photo(str(path))
+        images.append(added)
+        i.attrs = {}
+        i['src'] = "cid:" + added.split(".")[0]
+        print(i)
+    #adds an image to top
+    if top_image is not None:
+        path = top_image['data-hi-res-src']
+        added = download_photo(str(path))
+        images.insert(0, added)
+        top_image.attrs = {}
+        top_image['src'] = "cid:" + added.split(".")[0]
+        new_html = template_beg + top_image.prettify() + html.prettify() + template_end
+    else:
+        new_html = (template_beg + html.prettify() + template_end)
+    print(new_html)
+    return new_html, images
+
+
+def constract_html(me, password, you, url, headlines, image_data, max=0):
+    #if len(data) < 0 or data is None:
+    #    raise Exception("No images")
+    template_beg = "<html><head></head><body>"
+    template_end = "</body></html>"
+    images = list()
+    htmls = list()
+    for i in image_data:
+        path = i['data-low-res-src']
+        added = download_photo(str(path))
+        images.append(added)
+        i['src'] = "cid:" + added.split(".")[0]
+    print(str(image_data[1]))
+    for i in range(len(headlines)):
+        htmls.append(template_beg + str(image_data[i]) + "<p>" + str(headlines[i][0]) + "</p>" + template_end)
+    print(htmls)
+
+    for i in range(max):
+        html = BeautifulSoup(htmls[i], 'html.parser')
+        make_email(me, password, you, "smtp.gmail.com", 465,
+                   subject="New letterkk",
+                   html=htmls[i], image=images[i])
+
+
 
     # make_email(', '', '', 'smtp.gmail.com',
     #          465, subject="My new letter",)
 
+#написать сервер нужно
 
-def get_hits_by_name(name):
-    url_root = 'https://xtools.wmflabs.org/articleinfo/en.wikipedia.org/{}'
-    response = simple_get(url_root.format(name))
-
-    if response is not None:
-        html = BeautifulSoup(response, 'html.parser')
-        hit_link = [a for a in html.select('a') if a['href'].find('latest-60') > -1]
-
-        if len(hit_link) > 0:
-            link_text = hit_link[0].text.replace(',', '')
-            try:
-                return int(link_text)
-            except:
-                log_error("couldn't parse {} as an `int`".format(link_text))
-
-    log_error('No pageviews found for {}'.format(name))
-    return None
 
 if __name__ == '__main__':
-    res = get_wash_post_nav_bar_items()
-    get_some_articles('https://www.washingtonpost.com/politics/')
-    download_photo("https://www.washingtonpost.com/rf/image_220x164/2010-2019/WashingtonPost/2017/09/12/Editorial-Opinion/Images/court04-2338.jpg?t=20170517a")
+    me = "your@mail.com"
+    password = "your password"
+    you = "recipient@mail.com"
+    b = get_some_articles('https://www.washingtonpost.com/politics/')
+    constract_html(me, password, you, 'https://www.washingtonpost.com/politics/', b[0], b[1], 2)
