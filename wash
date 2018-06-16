@@ -28,7 +28,6 @@ def log_error(error):
 
 
 def get_wash_post_nav_bar_items():
-    url_root = "https://alistapart.com"
     response = simple_get("https://www.washingtonpost.com")
     if response is not None:
         html = BeautifulSoup(response, 'html.parser')
@@ -63,7 +62,7 @@ def get_some_articles(url):
     return None
 
 
-def constract(html, top_image=None):
+def constract(html):
     template_beg = "<html><head></head><body>"
     template_end = "</body></html>"
     images = list()
@@ -73,22 +72,12 @@ def constract(html, top_image=None):
         images.append(added)
         i.attrs = {}
         i['src'] = "cid:" + added.split(".")[0]
-        print(i)
-    #adds an image to top
-    if top_image is not None:
-        path = top_image['data-hi-res-src']
-        added = download_photo(str(path))
-        images.insert(0, added)
-        top_image.attrs = {}
-        top_image['src'] = "cid:" + added.split(".")[0]
-        new_html = template_beg + top_image.prettify() + html.prettify() + template_end
-    else:
-        new_html = (template_beg + html.prettify() + template_end)
+    new_html = (template_beg + html.prettify() + template_end)
     print(new_html)
     return new_html, images
 
 
-def constract_html(me, password, you, url, headlines, image_data, max=0):
+def constract_html(me, password, you, headlines, image_data, max=0):
     #if len(data) < 0 or data is None:
     #    raise Exception("No images")
     template_beg = "<html><head></head><body>"
@@ -120,8 +109,8 @@ def constract_html(me, password, you, url, headlines, image_data, max=0):
 
 
 if __name__ == '__main__':
-    me = "your@mail.com"
-    password = "your password"
-    you = "recipient@mail.com"
+    me = "@gmail.com"
+    password = "PASS"
+    you = "@gmail.com"
     b = get_some_articles('https://www.washingtonpost.com/politics/')
-    constract_html(me, password, you, 'https://www.washingtonpost.com/politics/', b[0], b[1], 2)
+    constract_html(me, password, you, b[0], b[1], 2)
