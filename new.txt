@@ -1,0 +1,378 @@
+	India Jalalpur
+
+
+5100 ms
+	SOCKS4, SOCKS5	High	1 minutes
+177.12.178.194	6667
+ Brazil "Belford Roxo"
+
+
+1920 ms
+	SOCKS4, SOCKS5	High	1 minutes
+207.154.231.211	1080
+ Germany "Frankfurt am Main"
+
+
+640 ms
+	SOCKS5	High	1 minutes
+204.0.52.231	63719
+ United States Englewood
+
+
+5100 ms
+	SOCKS5	High	1 minutes
+173.192.21.89	1080
+ United States Dallas
+
+
+920 ms
+	SOCKS4, SOCKS5	High	1 minutes
+212.237.35.14	1080
+ Italy Arezzo
+
+
+2540 ms
+	SOCKS4, SOCKS5	High	1 minutes
+188.120.229.27	12613
+ Russian Federation
+
+
+180 ms
+	SOCKS4, SOCKS5	High	1 minutes
+162.243.108.141	1080
+ United States "New York"
+
+
+1200 ms
+	SOCKS5	High	1 minutes
+192.210.202.110	2018
+ United States "Elk Grove Village"
+
+
+800 ms
+	SOCKS4, SOCKS5	High	1 minutes
+70.88.231.188	41444
+ United States
+
+
+1060 ms
+	SOCKS5	High	1 minutes
+95.85.58.154	1080
+ Netherlands Amsterdam
+
+
+660 ms
+	SOCKS5	High	1 minutes
+139.59.57.186	1080
+ India Bengaluru
+
+
+1940 ms
+	SOCKS5	High	1 minutes
+78.47.225.59	9050
+ Germany
+
+
+4020 ms
+	SOCKS4, SOCKS5	High	1 minutes
+150.129.54.105	6667
+ India Amreli
+
+
+1300 ms
+	SOCKS4, SOCKS5	High	1 minutes
+138.197.145.77	1080
+ Canada Toronto
+
+
+1380 ms
+	SOCKS5	High	1 minutes
+176.9.75.42	1080
+ Germany
+
+
+700 ms
+	SOCKS5	High	1 minutes
+139.59.109.156	1080
+ Singapore Singapore
+
+
+1920 ms
+	SOCKS5	High	1 minutes
+192.241.187.83	31650
+ United States "New York"
+
+
+4060 ms
+	SOCKS4, SOCKS5	High	1 minutes
+188.120.246.40	24799
+ Russian Federation
+
+
+180 ms
+	SOCKS4, SOCKS5	High	1 minutes
+138.197.157.68	1080
+ Canada Toronto
+
+
+1380 ms
+	SOCKS5	High	1 minutes
+88.198.50.103	1080
+ Germany Nuremberg
+
+
+420 ms
+	SOCKS5	High	1 minutes
+91.206.30.204	3129
+ Ukraine Kiev
+
+
+260 ms
+	SOCKS4, SOCKS5	High	1 minutes
+217.23.6.40	1080
+ Netherlands
+
+
+700 ms
+	SOCKS5	High	2 minutes
+190.12.54.34	6667
+ Ecuador Quito
+
+
+5100 ms
+	SOCKS5	High	2 minutes
+139.59.99.101	1080
+ Singapore Singapore
+
+
+1900 ms
+	SOCKS5	High	2 minutes
+162.243.175.141	1080
+ United States "North Bergen"
+
+
+1200 ms
+	SOCKS5	High	2 minutes
+139.59.99.63	1080
+ Singapore Singapore
+
+
+1900 ms
+	SOCKS5	High	2 minutes
+88.198.24.108	1080
+ Germany Nuremberg
+
+
+720 ms
+	SOCKS5	High	2 minutes
+139.59.99.234	1080
+ Singapore Singapore
+
+
+1700 ms
+	SOCKS5	High	2 minutes
+88.99.34.27	1080
+ Germany
+
+
+660 ms
+	SOCKS5	High	2 minutes
+138.197.157.32	1080
+ Canada Toronto
+
+
+1380 ms
+	SOCKS5	High	2 minutes
+45.55.27.161	1080
+ United States "San Francisco"
+
+
+1840 ms
+	SOCKS5	High	2 minutes
+138.197.204.55	1080
+ United States "Santa Clara"
+
+
+1840 ms
+	SOCKS5	High	2 minutes
+46.4.96.137	1080
+ Germany
+
+
+720 ms
+	SOCKS5	High	2 minutes
+138.197.157.45	1080
+ Canada Toronto
+
+
+1420 ms
+	SOCKS5	High	2 minutes
+95.85.36.236	1080
+ Netherlands Amsterdam
+
+
+660 ms
+	SOCKS5	High	2 minutes
+188.120.246.40	37985
+ Russian Federation
+
+
+180 ms
+	SOCKS4, SOCKS5	High	2 minutes
+176.9.119.170	1080
+ Germany
+
+
+700 ms
+	SOCKS5	High	2 minutes
+139.59.53.105	1080
+ India Bengaluru
+
+
+1960 ms
+	SOCKS5	High	2 minutes
+138.197.157.44	1080
+ Canada Toronto
+
+
+1360 ms
+	SOCKS5	High	2 minutes
+95.110.207.71	9673
+ Italy Arezzo
+
+
+620 ms
+	SOCKS4, SOCKS5	High	2 minutes
+46.5.252.70	1080
+ Germany Blaustein
+
+
+360 ms
+	SOCKS5	High	2 minutes
+138.68.165.154	1080
+ United Kingdom London
+
+
+720 ms
+	SOCKS5	High	2 minutes
+163.47.11.113	1080
+ Singapore Singapore
+
+
+1520 ms
+	SOCKS5	High	2 minutes
+138.68.173.29	1080
+ United Kingdom London
+
+
+740 ms
+	SOCKS5	High	2 minutes
+138.68.230.88	1080
+ United States "Santa Clara"
+
+
+1860 ms
+	SOCKS5	High	2 minutes
+162.243.107.120	1080
+ United States "New York"
+
+
+1180 ms
+	SOCKS5	High	2 minutes
+139.59.169.246	1080
+ United Kingdom London
+
+
+740 ms
+	SOCKS5	High	3 minutes
+45.55.27.157	1080
+ United States "San Francisco"
+
+
+1840 ms
+	SOCKS5	High	3 minutes
+139.59.59.63	1080
+ India Bengaluru
+
+
+2020 ms
+	SOCKS5	High	3 minutes
+188.226.141.219	1080
+ Netherlands Amsterdam
+
+
+660 ms
+	SOCKS5	High	3 minutes
+45.55.27.17	1080
+ United States "San Francisco"
+
+
+1820 ms
+	SOCKS5	High	3 minutes
+207.154.231.216	1080
+ Germany "Frankfurt am Main"
+
+
+640 ms
+	SOCKS5	High	3 minutes
+188.226.141.216	1080
+ Netherlands Amsterdam
+
+
+660 ms
+	SOCKS5	High	3 minutes
+91.122.14.44	57684
+ Russian Federation "St Petersburg"
+
+
+260 ms
+	SOCKS4, SOCKS5	High	3 minutes
+188.120.246.40	39632
+ Russian Federation
+
+
+180 ms
+	SOCKS4, SOCKS5	High	3 minutes
+207.154.233.31	1080
+ Germany "Frankfurt am Main"
+
+
+4020 ms
+	SOCKS4, SOCKS5	High	3 minutes
+176.118.131.136	6667
+ Russian Federation Maykop
+
+
+240 ms
+	SOCKS4, SOCKS5	High	3 minutes
+139.59.101.223	1080
+ Singapore Singapore
+
+
+1780 ms
+	SOCKS5	High	3 minutes
+188.166.201.181	1080
+ Netherlands Amsterdam
+
+
+660 ms
+	SOCKS5	High	3 minutes
+138.68.169.8	1080
+ United Kingdom London
+
+
+740 ms
+	SOCKS5	High	3 minutes
+67.205.146.77	1080
+ United States "North Bergen"
+
+
+1200 ms
+	SOCKS5	High	3 minutes
+171.25.175.22	6667
+ Russian Federation Moscow
+
+
+460 ms
+	SOCKS4, SOCKS5	High	3 minutes
+178.62.245.236	1080
